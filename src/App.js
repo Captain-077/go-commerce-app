@@ -3,6 +3,7 @@ import './App.css';
 import Navbar from "./components/Navbar"
 import Cart from "./components/Cart"
 import Home from "./components/Home"
+import NotFound from './components/NotFound';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Routes>
           <Route path = "/cart" Component={Cart}/>
           <Route path = "/" Component={Home}/>
+          <Route path = "*" Component={NotFound}/>
         </Routes>
 
 
