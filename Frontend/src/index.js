@@ -3,13 +3,15 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import {configureStore} from "@reduxjs/toolkit";
 import {Provider} from "react-redux";
-import productsReducer from "./Features/ProductsSlice"
+import productsReducer, { productsFetch } from "./Features/ProductsSlice"
 
 const store = configureStore({
   reducer:{
     products:productsReducer,
   },
 })
+
+store.dispatch(productsFetch());
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
