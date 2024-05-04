@@ -1,9 +1,16 @@
 import React from 'react'
 import Navbar from './Navbar'
 import { useGetAllProductsQuery } from '../Features/ProductsAPI'
+import {useDispatch} from "react-redux";
+import { addToCart } from "../Features/cartSlice";
 
 function Home() {
   const { data, error, isLoading } = useGetAllProductsQuery()
+  const Dispatch = useDispatch()
+  const handleAddToCart = (product) => {
+    Dispatch(addToCart(product))
+  }
+
   // const {items,status} = useSelector(state => state.products) <--used with Async thunk-->
   return (
     <>
@@ -23,7 +30,7 @@ function Home() {
                     <span>{product.desc}</span>
                     <span className='price'>${product.price}</span>
                   </div>
-                  <button>Add to cart</button>
+                  <button onClick = {() => handleAddToCart(product)}>Add to cart</button>
                 </div>
                 )
               })}
