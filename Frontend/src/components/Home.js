@@ -3,12 +3,17 @@ import Navbar from './Navbar'
 import { useGetAllProductsQuery } from '../Features/ProductsAPI'
 import {useDispatch} from "react-redux";
 import { addToCart } from "../Features/cartSlice";
+import { useNavigate } from 'react-router-dom';
+
 
 function Home() {
   const { data, error, isLoading } = useGetAllProductsQuery()
   const Dispatch = useDispatch()
+  const navigate = useNavigate()
+
   const handleAddToCart = (product) => {
     Dispatch(addToCart(product))
+    navigate('/cart');
   }
 
   // const {items,status} = useSelector(state => state.products) <--used with Async thunk-->
