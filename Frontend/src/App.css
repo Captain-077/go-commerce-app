@@ -142,3 +142,25 @@
   background-color: #1d4ad3;
   letter-spacing: 1.15px;
 }
+
+
+/* cart-items */
+
+.titles{
+  display: flex;
+  justify-content: space-evenly;
+align-items: center;
+}
+.cart-item{
+display: flex;
+justify-content: space-evenly;
+align-items: center;
+}
+
+.cart-product{
+  display: flex;
+}
+
+.cart-product-price{
+  display: flex;
+}

@@ -33,8 +33,29 @@ function Cart() {
 
           <div className="cart-items">
             {cart?.cartItems?.map((item) => {
-             return <div className="cart-items" key={item.id}>
-                <p>{item.name}</p>
+              return <div className="cart-item" key={item.id}>
+                <div className="cart-product">
+                  <img src={item.image} alt={item.name} style={{ width: "200px", height: "200px" }} />
+                  <div>
+                    <h3>{item.name}</h3>
+                    <p>{item.desc}</p>
+                    <button>Remove</button>
+                  </div>
+                  </div>
+
+                <div className="cart-product-price">
+                  ${item.price}
+                </div>
+
+                <div className="cart-product-quantity">
+                  <button>-</button>
+                  <div className="count">{item.cartQuantity}</div>
+                  <button>+</button>
+                </div>
+
+                <div className="cart-product-total-price">${item.cartQuantity*item.price}</div>
+
+              
 
               </div>
 
