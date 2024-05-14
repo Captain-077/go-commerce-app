@@ -1,12 +1,17 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useGetAllProductsQuery } from '../Features/ProductsAPI'
 import { Link } from 'react-router-dom';
+import { removeFromCart } from "../Features/cartSlice";
 
 function Cart() {
   const cart = useSelector((state) => state.cart)
   const { data, error, isLoading } = useGetAllProductsQuery();
+  const dispatch = useDispatch()
 
+  const handleRemoveFromCart = (cartItem) => {
+    dispatch(removeFromCart(cartItem));
+  }
 
   return (
     <div className="cart-container">
@@ -41,7 +46,7 @@ function Cart() {
                   <div>
                     <h3>{item.name}</h3>
                     <p>{item.desc}</p>
-                    <button>Remove</button>
+                    <button onClick={() => handleRemoveFromCart(cartItem)}>Remove</button>
                   </div>
                 </div>
 
