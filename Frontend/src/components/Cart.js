@@ -11,7 +11,7 @@ function Cart() {
 
   const handleRemoveFromCart = (cartItem) => {
     dispatch(removeFromCart(cartItem));
-  }
+  };
 
   return (
     <div className="cart-container">
@@ -46,7 +46,7 @@ function Cart() {
                   <div>
                     <h3>{item.name}</h3>
                     <p>{item.desc}</p>
-                    <button onClick={() => handleRemoveFromCart(cartItem)}>Remove</button>
+                    <button onClick={() => (handleRemoveFromCart(item))}>Remove</button>
                   </div>
                 </div>
 
