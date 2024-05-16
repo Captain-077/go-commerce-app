@@ -82,22 +82,9 @@ const cartSlice = createSlice({
             localStorage.setItem("cartItems", JSON.stringify(state.cartItems))
         },
 
-        increaseCart(state, action) {
-
-            const itemIndex = state.cartItems.findIndex(
-                cartItem => cartItem.id === action.payload.id
-            )
-            state.cartItems[itemIndex].cartQuantity += 1
-
-            toast.info(`Increased ${action.payload.name} in cart quantity`, {
-                position: "bottom-left",
-                autoClose: 1200
-            });
-        }
-
     },
 })
 
-export const { addToCart, removeFromCart, decreaseCart, increaseCart } = cartSlice.actions;
+export const { addToCart, removeFromCart, decreaseCart } = cartSlice.actions;
 
 export default cartSlice.reducer;

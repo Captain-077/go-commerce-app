@@ -2,7 +2,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useGetAllProductsQuery } from '../Features/ProductsAPI'
 import { Link } from 'react-router-dom';
-import { decreaseCart, increaseCart, removeFromCart } from "../Features/cartSlice";
+import { addToCart, decreaseCart, removeFromCart } from "../Features/cartSlice";
 
 function Cart() {
   const cart = useSelector((state) => state.cart)
@@ -18,7 +18,7 @@ function Cart() {
   }
 
   const handleIncCart = (cartItem) => {
-    dispatch(increaseCart(cartItem));
+    dispatch(addToCart(cartItem));
   };
 
   return (
