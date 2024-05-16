@@ -2,7 +2,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useGetAllProductsQuery } from '../Features/ProductsAPI'
 import { Link } from 'react-router-dom';
-import { removeFromCart } from "../Features/cartSlice";
+import { decreaseCart, increaseCart, removeFromCart } from "../Features/cartSlice";
 
 function Cart() {
   const cart = useSelector((state) => state.cart)
@@ -11,6 +11,14 @@ function Cart() {
 
   const handleRemoveFromCart = (cartItem) => {
     dispatch(removeFromCart(cartItem));
+  };
+
+  const handleDecCart = (cartItem) => {
+    dispatch(decreaseCart(cartItem));
+  }
+
+  const handleIncCart = (cartItem) => {
+    dispatch(increaseCart(cartItem));
   };
 
   return (
@@ -55,9 +63,9 @@ function Cart() {
                 </div>
 
                 <div className="cart-product-quantity">
-                  <button>-</button>
+                  <button onClick={() =>(handleDecCart(item)) }>-</button>
                   <div className="count">{item.cartQuantity}</div>
-                  <button>+</button>
+                  <button onClick={() =>(handleIncCart(item)) }>+</button>
                 </div>
 
                 <div className="cart-product-total-price">${item.cartQuantity * item.price}</div>
