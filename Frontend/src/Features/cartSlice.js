@@ -48,6 +48,10 @@ const cartSlice = createSlice({
 
         },
 
+        decreaseCart(state,action){
+
+        }
+
     },
 })
 
