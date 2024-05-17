@@ -2,7 +2,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useGetAllProductsQuery } from '../Features/ProductsAPI'
 import { Link } from 'react-router-dom';
-import { addToCart, decreaseCart, removeFromCart } from "../Features/cartSlice";
+import { addToCart, clearCart, decreaseCart, removeFromCart } from "../Features/cartSlice";
 
 function Cart() {
   const cart = useSelector((state) => state.cart)
@@ -19,6 +19,10 @@ function Cart() {
 
   const handleIncCart = (cartItem) => {
     dispatch(addToCart(cartItem));
+  };
+
+  const handleClearCart = () => {
+    dispatch(clearCart());
   };
 
   return (
@@ -74,9 +78,8 @@ function Cart() {
             })}
           </div>
 
-
           <div className="cart-summary">
-            <button className="clear-cart">Clear Cart</button>
+            <button className="clear-cart" onClick={() => handleClearCart()}>Clear Cart</button>
             <div className="cart-checkout">
               <div className="subtotal">
                 <span>Subtotal</span>
