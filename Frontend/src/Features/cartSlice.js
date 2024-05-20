@@ -89,6 +89,9 @@ const cartSlice = createSlice({
                 autoClose: 1200
             });
             localStorage.setItem("cartItems", JSON.stringify(state.cartItems))
+        },
+        getTotals(state,action){
+            
         }
 
     },
