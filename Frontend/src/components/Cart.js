@@ -1,13 +1,17 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useGetAllProductsQuery } from '../Features/ProductsAPI'
 import { Link } from 'react-router-dom';
-import { addToCart, clearCart, decreaseCart, removeFromCart } from "../Features/cartSlice";
+import { addToCart, clearCart, decreaseCart, getTotals, removeFromCart } from "../Features/cartSlice";
 
 function Cart() {
   const cart = useSelector((state) => state.cart)
   const { data, error, isLoading } = useGetAllProductsQuery();
   const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getTotals());
+  }, [cart,dispatch])
 
   const handleRemoveFromCart = (cartItem) => {
     dispatch(removeFromCart(cartItem));
@@ -67,9 +71,9 @@ function Cart() {
                 </div>
 
                 <div className="cart-product-quantity">
-                  <button onClick={() =>(handleDecCart(item)) }>-</button>
+                  <button onClick={() => (handleDecCart(item))}>-</button>
                   <div className="count">{item.cartQuantity}</div>
-                  <button onClick={() =>(handleIncCart(item)) }>+</button>
+                  <button onClick={() => (handleIncCart(item))}>+</button>
                 </div>
 
                 <div className="cart-product-total-price">${item.cartQuantity * item.price}</div>
